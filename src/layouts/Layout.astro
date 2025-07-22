@@ -1,0 +1,95 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Hypnose thérapeutique avec Clotilde" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content={description} />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="font-quicksand">
+  <slot />
+
+  <!-- Script AOS avec import -->
+  <script>
+    import AOS from 'aos';
+    import 'aos/dist/aos.css';
+
+    // Initialiser AOS
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+      offset: 100,
+      delay: 100
+    });
+  </script>
+</body>
+</html>
+
+<style is:global>
+  :root {
+    --color-primary: #6B8E6B;
+    --color-secondary: #A8C4A8;
+    --color-accent: #8FBC8F;
+    --color-neutral: #F5F5F0;
+    --color-text: #2C3E2C;
+    --color-text-light: #5A6B5A;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Quicksand', sans-serif;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-neutral);
+  }
+
+  .font-lora {
+    font-family: 'Lora', serif;
+  }
+
+  .font-quicksand {
+    font-family: 'Quicksand', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Scrollbar personnalisée */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-neutral);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-secondary);
+  }
+</style>

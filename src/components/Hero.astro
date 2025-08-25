@@ -31,13 +31,15 @@
 
       <!-- Image -->
       <div class="relative" data-aos="fade-left" data-aos-delay="200">
-        <div class="relative z-10 bg-white rounded-2xl shadow-2xl overflow-hidden">
-          <img
-            src="/images/therapeuthe.jpg"
-            alt="Clotilde, hypnothérapeute - Séance d'hypnose thérapeutique"
-            class="w-full h-96 lg:h-[500px] object-cover"
-            loading="lazy"
-          />
+        <div class="relative z-10 bg-white rounded-2xl shadow-2xl overflow-hidden aspect-video">
+          <video
+            src="/videos/video_douarnenez.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+            class="w-full h-full object-cover"
+          ></video>
         </div>
 
         <!-- Éléments décoratifs -->
@@ -48,12 +50,15 @@
     </div>
 
     <!-- Indicateur de scroll -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <!-- <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
       <a href="#hypnose" class="text-primary-500 hover:text-primary-600 transition-colors">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
         </svg>
       </a>
+    </div> -->
+    <div class="mouse-wheel" aria-hidden="true">
+      <div class="wheel"></div>
     </div>
   </div>
 </section>
@@ -67,4 +72,54 @@
   .animate-float {
     animation: float 3s ease-in-out infinite;
   }
+
+  /* --- Indicateur de défilement stylisé : Souris ---*/
+.mouse-wheel {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 50px;
+  border: 2px solid #4A664A;;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.mouse-wheel:hover {
+  opacity: 1;
+}
+
+.wheel {
+  width: 4px;
+  height: 10px;
+  background-color: #4A664A;
+  border-radius: 2px;
+  margin-top: 10px;
+  animation: scrollWheel 1.5s infinite;
+}
+
+/* Animation de la molette */
+@keyframes scrollWheel {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+}
+
+/* Accessibilité : réduire les animations si demandé */
+@media (prefers-reduced-motion: reduce) {
+  .wheel {
+    animation: none;
+  }
+}
 </style>

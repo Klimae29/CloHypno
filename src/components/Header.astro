@@ -31,8 +31,8 @@
 
       <!-- Menu Mobile -->
       <button id="mobile-menu-btn" class="md:hidden text-primary-600 hover:text-primary-700 transition-colors">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        <svg class="w-6 h-6 transition-transform duration-300 group-hover:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path class="transition-all duration-300" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
     </div>
@@ -93,3 +93,21 @@
     });
   });
 </script>
+
+<style>
+/* Effet de pulsation subtile au hover */
+@keyframes pulse-gentle {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+#mobile-menu-btn:hover {
+  animation: pulse-gentle 2s ease-in-out infinite;
+}
+
+/* Effet sur les lignes du hamburger */
+#mobile-menu-btn:hover svg path {
+  stroke-width: 2.5;
+  filter: drop-shadow(0 0 3px rgba(59, 130, 246, 0.3));
+}
+</style>
